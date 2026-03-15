@@ -26,8 +26,9 @@ button:hover { background: #2980b9; }
 <h2>🎲 ¿Qué personaje de Rayuela eres?</h2>
 <p>Responde las 10 preguntas y descubre tu resultado.</p>
 <form id="quiz">
-<!-- Preguntas se colocan aquí (igual que HTML anterior) -->
-<!-- ... Copia todas las preguntas y opciones aquí ... -->
+
+<!-- Preguntas completas -->
+
 <div class="question">
 <p>1. ¿Qué te atrae más de una conversación?</p>
 <label><input type="radio" name="q1" value="A"> Ideas profundas y filosóficas</label>
@@ -35,8 +36,81 @@ button:hover { background: #2980b9; }
 <label><input type="radio" name="q1" value="C"> Humor e ironía</label>
 <label><input type="radio" name="q1" value="D"> Lo práctico</label>
 </div>
-<!-- Repite para las 10 preguntas -->
+
+<div class="question">
+<p>2. En una ciudad nueva, ¿qué haces primero?</p>
+<label><input type="radio" name="q2" value="A"> Caminar pensando</label>
+<label><input type="radio" name="q2" value="B"> Perderme y explorar</label>
+<label><input type="radio" name="q2" value="C"> Buscar gente interesante</label>
+<label><input type="radio" name="q2" value="D"> Organizar el recorrido</label>
+</div>
+
+<div class="question">
+<p>3. ¿Cómo te describen tus amigos?</p>
+<label><input type="radio" name="q3" value="A"> Intelectual</label>
+<label><input type="radio" name="q3" value="B"> Sensible</label>
+<label><input type="radio" name="q3" value="C"> Irónico</label>
+<label><input type="radio" name="q3" value="D"> Equilibrado</label>
+</div>
+
+<div class="question">
+<p>4. ¿Qué relación tienes con las normas?</p>
+<label><input type="radio" name="q4" value="A"> Las cuestiono</label>
+<label><input type="radio" name="q4" value="B"> No pienso en ellas</label>
+<label><input type="radio" name="q4" value="C"> Las sigo con sarcasmo</label>
+<label><input type="radio" name="q4" value="D"> Son necesarias</label>
+</div>
+
+<div class="question">
+<p>5. Si tu vida fuera música sería:</p>
+<label><input type="radio" name="q5" value="A"> Jazz experimental</label>
+<label><input type="radio" name="q5" value="B"> Improvisación</label>
+<label><input type="radio" name="q5" value="C"> Algo extraño pero fascinante</label>
+<label><input type="radio" name="q5" value="D"> Una melodía armoniosa</label>
+</div>
+
+<div class="question">
+<p>6. ¿Qué te inquieta más?</p>
+<label><input type="radio" name="q6" value="A"> El sentido de la vida</label>
+<label><input type="radio" name="q6" value="B"> Perder conexiones humanas</label>
+<label><input type="radio" name="q6" value="C"> El absurdo del mundo</label>
+<label><input type="radio" name="q6" value="D"> El desorden</label>
+</div>
+
+<div class="question">
+<p>7. En tu grupo de amigos eres:</p>
+<label><input type="radio" name="q7" value="A"> El filósofo</label>
+<label><input type="radio" name="q7" value="B"> El emocional</label>
+<label><input type="radio" name="q7" value="C"> El observador irónico</label>
+<label><input type="radio" name="q7" value="D"> El equilibrado</label>
+</div>
+
+<div class="question">
+<p>8. ¿Qué valoras más?</p>
+<label><input type="radio" name="q8" value="A"> Conocimiento</label>
+<label><input type="radio" name="q8" value="B"> Intuición</label>
+<label><input type="radio" name="q8" value="C"> Lucidez</label>
+<label><input type="radio" name="q8" value="D"> Estabilidad</label>
+</div>
+
+<div class="question">
+<p>9. ¿Qué te atrae en otra persona?</p>
+<label><input type="radio" name="q9" value="A"> Inteligencia</label>
+<label><input type="radio" name="q9" value="B"> Autenticidad</label>
+<label><input type="radio" name="q9" value="C"> Humor</label>
+<label><input type="radio" name="q9" value="D"> Serenidad</label>
+</div>
+
+<div class="question">
+<p>10. ¿Cómo enfrentas el caos de la vida?</p>
+<label><input type="radio" name="q10" value="A"> Pensándolo mucho</label>
+<label><input type="radio" name="q10" value="B"> Viviéndolo</label>
+<label><input type="radio" name="q10" value="C"> Observándolo</label>
+<label><input type="radio" name="q10" value="D"> Ordenándolo</label>
+</div>
+
 <button type="button" onclick="calculateResult()">Ver resultado</button>
+
 </form>
 <div id="result"></div>
 <div class="result-buttons" id="result-buttons"></div>
@@ -68,4 +142,7 @@ function calculateResult(){
   document.getElementById("result-buttons").innerHTML = `
     <a href='https://twitter.com/intent/tweet?text=${encodeURIComponent(resultText)}'>Compartir en Twitter</a>
     <a href='' onclick='location.reload();return false;'>Volver a empezar</a>
-    <a href='https://laliteraturacomoresistencia.wordpress.com/2026/03/12/rayuela-de-julio-cortazar-analisis-estructura-y-por-que-esta-novela-cambio-la-literatura/'>Ir al artículo
+    <a href='https://laliteraturacomoresistencia.wordpress.com/2026/03/12/rayuela-de-julio-cortazar-analisis-estructura-y-por-que-esta-novela-cambio-la-literatura/'>Ir al artículo</a>
+  `;
+}
+</script>
