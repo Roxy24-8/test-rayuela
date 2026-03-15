@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test de Rayuela</title>
+<style>
+body { font-family: 'Arial', sans-serif; background: #f0f4f8; color: #333; display: flex; justify-content: center; padding: 20px; }
+#test-container { background: #fff; padding: 30px; border-radius: 15px; max-width: 700px; width: 100%; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+h2 { text-align: center; color: #2c3e50; }
+.question { margin-bottom: 20px; }
+label { display: block; padding: 8px 12px; margin: 5px 0; background: #ecf0f1; border-radius: 8px; cursor: pointer; transition: background 0.3s; }
+label:hover { background: #d0e1f9; }
+input[type=radio] { margin-right: 10px; }
+button { background: #3498db; color: #fff; border: none; padding: 12px 25px; font-size: 16px; border-radius: 8px; cursor: pointer; transition: background 0.3s; }
+button:hover { background: #2980b9; }
+#result { margin-top: 20px; font-size: 18px; font-weight: bold; text-align: center; }
+.result-buttons { margin-top: 15px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.result-buttons a { text-decoration: none; padding: 10px 15px; border-radius: 8px; background: #2ecc71; color: #fff; transition: background 0.3s; }
+.result-buttons a:hover { background: #27ae60; }
+</style>
+</head>
+<body>
+<div id="test-container">
+<h2>🎲 ¿Qué personaje de Rayuela eres?</h2>
+<p>Responde las 10 preguntas y descubre tu resultado.</p>
+<form id="quiz">
+<!-- Preguntas se colocan aquí (igual que HTML anterior) -->
+<!-- ... Copia todas las preguntas y opciones aquí ... -->
+<div class="question">
+<p>1. ¿Qué te atrae más de una conversación?</p>
+<label><input type="radio" name="q1" value="A"> Ideas profundas y filosóficas</label>
+<label><input type="radio" name="q1" value="B"> Emociones y sentimientos</label>
+<label><input type="radio" name="q1" value="C"> Humor e ironía</label>
+<label><input type="radio" name="q1" value="D"> Lo práctico</label>
+</div>
+<!-- Repite para las 10 preguntas -->
+<!-- Botón para calcular resultado -->
+<button type="button" onclick="calculateResult()">Ver resultado</button>
+</form>
+<div id="result"></div>
+<div class="result-buttons" id="result-buttons"></div>
+</div>
+<script>
+function calculateResult(){
+  let counts = {A:0, B:0, C:0, D:0};
+  for(let i=1; i<=10; i++){
+    let answer = document.querySelector('input[name="q'+i+'"]:checked');
+    if(answer){ counts[answer.value]++; }
+  }
+  let max = Object.keys(counts).reduce((a,b)=>counts[a]>=counts[b]?a:b);
+  let resultText = "";
+  if(max==="A"){
+    resultText="Eres Horacio Oliveira: reflexivo, intelectual y siempre buscando el sentido profundo de la vida.";
+  } else if(max==="B"){
+    resultText="Eres La Maga: intuitiva, sensible y espontánea.";
+  } else if(max==="C"){
+    resultText="Eres Traveler: irónico, observador y lúcido ante el absurdo del mundo.";
+  } else {
+    resultText="Eres Talita: equilibrada, práctica y con gran estabilidad emocional.";
+  }
+  document.getElementById("result").innerText = resultText;
+
+// Botones A + B + C
+document.getElementById("result-buttons").innerHTML = `     <a href='https://twitter.com/intent/tweet?text=${encodeURIComponent(resultText)}'>Compartir en Twitter</a>     <a href='' onclick='location.reload();return false;'>Volver a empezar</a>     <a href='https://laliteraturacomoresistencia.wordpress.com/2026/03/12/rayuela-de-julio-cortazar-analisis-estructura-y-por-que-esta-novela-cambio-la-literatura/'>Ir al artículo</a>
+  `;
+} </script>
+
+</body>
+</html>
