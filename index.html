@@ -36,7 +36,6 @@ button:hover { background: #2980b9; }
 <label><input type="radio" name="q1" value="D"> Lo práctico</label>
 </div>
 <!-- Repite para las 10 preguntas -->
-<!-- Botón para calcular resultado -->
 <button type="button" onclick="calculateResult()">Ver resultado</button>
 </form>
 <div id="result"></div>
@@ -45,9 +44,14 @@ button:hover { background: #2980b9; }
 <script>
 function calculateResult(){
   let counts = {A:0, B:0, C:0, D:0};
+  let allAnswered = true;
   for(let i=1; i<=10; i++){
     let answer = document.querySelector('input[name="q'+i+'"]:checked');
-    if(answer){ counts[answer.value]++; }
+    if(answer){ counts[answer.value]++; } else { allAnswered = false; }
+  }
+  if(!allAnswered){
+    alert("Por favor responde todas las preguntas antes de ver el resultado.");
+    return;
   }
   let max = Object.keys(counts).reduce((a,b)=>counts[a]>=counts[b]?a:b);
   let resultText = "";
@@ -61,11 +65,7 @@ function calculateResult(){
     resultText="Eres Talita: equilibrada, práctica y con gran estabilidad emocional.";
   }
   document.getElementById("result").innerText = resultText;
-
-// Botones A + B + C
-document.getElementById("result-buttons").innerHTML = `     <a href='https://twitter.com/intent/tweet?text=${encodeURIComponent(resultText)}'>Compartir en Twitter</a>     <a href='' onclick='location.reload();return false;'>Volver a empezar</a>     <a href='https://laliteraturacomoresistencia.wordpress.com/2026/03/12/rayuela-de-julio-cortazar-analisis-estructura-y-por-que-esta-novela-cambio-la-literatura/'>Ir al artículo</a>
-  `;
-} </script>
-
-</body>
-</html>
+  document.getElementById("result-buttons").innerHTML = `
+    <a href='https://twitter.com/intent/tweet?text=${encodeURIComponent(resultText)}'>Compartir en Twitter</a>
+    <a href='' onclick='location.reload();return false;'>Volver a empezar</a>
+    <a href='https://laliteraturacomoresistencia.wordpress.com/2026/03/12/rayuela-de-julio-cortazar-analisis-estructura-y-por-que-esta-novela-cambio-la-literatura/'>Ir al artículo
